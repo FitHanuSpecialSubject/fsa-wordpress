@@ -1,0 +1,11 @@
+<wpml-config>
+	<admin-texts>
+		<key name="magbook_theme_options">
+			<key name="magbook_search_text" />
+			<key name="magbook_tag_text" />
+			<key name="magbook_img-upload-footer-image" />
+			<key name="magbook_breaking_news_title" />
+			<key name="magbook_feature_news_title" />
+		</key>
+	</admin-texts>
+</wpml-config>

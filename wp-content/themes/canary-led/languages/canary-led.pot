@@ -1,0 +1,525 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: led 1.0\n"
+"POT-Creation-Date: 2023-04-03 03:07-0600\n"
+"PO-Revision-Date: 2022-12-23 09:07+0545\n"
+"Last-Translator: \n"
+"Language-Team: Theme Canary<themecanary@gmail.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __e;__;esc_attr__;esc_attr_e;_x;_n;esc_html__;"
+"esc_html_e;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: 404.php:21
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: 404.php:30
+msgid "Most Used Categories"
+msgstr ""
+
+#: 404.php:48
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: comments.php:35
+#, php-format
+msgid "One thought on &ldquo;%1$s&rdquo;"
+msgstr ""
+
+#: comments.php:68
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:47
+msgid "https://wordpress.org/"
+msgstr ""
+
+#: footer.php:50
+#, php-format
+msgid "Proudly powered by %s"
+msgstr ""
+
+#: footer.php:57
+#, php-format
+msgid "Theme: %1$s"
+msgstr ""
+
+#: footer.php:63
+#, php-format
+msgid "By %1$s"
+msgstr ""
+
+#: footer.php:69
+msgid "Top"
+msgstr ""
+
+#: functions.php:54 header.php:140
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:55
+msgid "Top Menu"
+msgstr ""
+
+#: functions.php:56
+msgid "Social Icon"
+msgstr ""
+
+#: functions.php:207
+#, php-format
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: header.php:33
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:51
+msgid "Infobar Menu"
+msgstr ""
+
+#: inc/admin/admin-notice.php:12
+#, php-format
+msgid "Welcome to %s"
+msgstr ""
+
+#: inc/admin/admin-notice.php:15
+#, php-format
+msgid ""
+"Thank you for choosing %1$s! Explore beautiful templates and setup your site"
+msgstr ""
+
+#: inc/admin/admin-notice.php:19
+#, php-format
+msgid "Get started with %s"
+msgstr ""
+
+#: inc/admin/theme-info.php:14
+msgid "About Theme"
+msgstr ""
+
+#: inc/admin/theme-info.php:14
+msgid "Canary Led Theme"
+msgstr ""
+
+#: inc/admin/theme-info.php:48
+msgid "Multipurpose WordPress Theme"
+msgstr ""
+
+#: inc/admin/theme-info.php:54 inc/admin/theme-info.php:347
+msgid "Documentation"
+msgstr ""
+
+#: inc/admin/theme-info.php:57
+msgid "Demo"
+msgstr ""
+
+#: inc/admin/theme-info.php:67
+msgid "Download Demo content for Free!"
+msgstr ""
+
+#: inc/admin/theme-info.php:68
+msgid ""
+"Install Recommended Plugins and access to all the Theme Canary Demo "
+"templates. This plugin will help you to show exactly as shown in demo"
+msgstr ""
+
+#: inc/admin/theme-info.php:85
+msgid ""
+"Note: Clicking the button will both install and activate recommended "
+"plugins. It may take few minutes to install all the plugins"
+msgstr ""
+
+#: inc/admin/theme-info.php:91
+msgid "Free Vs Pro"
+msgstr ""
+
+#: inc/admin/theme-info.php:97
+msgid "Features"
+msgstr ""
+
+#: inc/admin/theme-info.php:100
+msgid "Canary Led Free"
+msgstr ""
+
+#: inc/admin/theme-info.php:103
+msgid "Canary Led Pro"
+msgstr ""
+
+#: inc/admin/theme-info.php:110
+msgid "Easy Setup"
+msgstr ""
+
+#: inc/admin/theme-info.php:119
+msgid "Responsive"
+msgstr ""
+
+#: inc/admin/theme-info.php:129
+msgid "Color Skin"
+msgstr ""
+
+#: inc/admin/theme-info.php:138
+msgid "Background Color Options"
+msgstr ""
+
+#: inc/admin/theme-info.php:147
+msgid "Font Color Options"
+msgstr ""
+
+#: inc/admin/theme-info.php:156
+msgid "Font Family"
+msgstr ""
+
+#: inc/admin/theme-info.php:158
+msgid "1 Google Fonts"
+msgstr ""
+
+#: inc/admin/theme-info.php:160
+msgid "800+ Google Fonts"
+msgstr ""
+
+#: inc/admin/theme-info.php:165
+msgid "Demos"
+msgstr ""
+
+#: inc/admin/theme-info.php:167
+msgid "7"
+msgstr ""
+
+#: inc/admin/theme-info.php:169
+msgid "12"
+msgstr ""
+
+#: inc/admin/theme-info.php:174
+msgid "Slider "
+msgstr ""
+
+#: inc/admin/theme-info.php:183
+msgid "Multiple Footer Column"
+msgstr ""
+
+#: inc/admin/theme-info.php:192
+msgid "Footer Editing Options"
+msgstr ""
+
+#: inc/admin/theme-info.php:201
+msgid "Font Size"
+msgstr ""
+
+#: inc/admin/theme-info.php:210
+msgid "Change Excerpt & Search Text"
+msgstr ""
+
+#: inc/admin/theme-info.php:219
+msgid "Front/ Home page posts categories"
+msgstr ""
+
+#: inc/admin/theme-info.php:228
+msgid "Sticky Menu"
+msgstr ""
+
+#: inc/admin/theme-info.php:237 inc/customizer/all-theme-options.php:24
+msgid "Blog/ Single Options"
+msgstr ""
+
+#: inc/admin/theme-info.php:246
+msgid "Change Header Content"
+msgstr ""
+
+#: inc/admin/theme-info.php:255
+msgid "Boxed Layout"
+msgstr ""
+
+#: inc/admin/theme-info.php:264
+msgid "Site Layout"
+msgstr ""
+
+#: inc/admin/theme-info.php:273
+msgid "Small Blog"
+msgstr ""
+
+#: inc/admin/theme-info.php:282
+msgid "Footer Menu"
+msgstr ""
+
+#: inc/admin/theme-info.php:291
+msgid "Menu and Logo Same Line"
+msgstr ""
+
+#: inc/admin/theme-info.php:300
+msgid "Logo and Social Center"
+msgstr ""
+
+#: inc/admin/theme-info.php:309
+msgid "Menu Center"
+msgstr ""
+
+#: inc/admin/theme-info.php:322
+msgid "Love our product?"
+msgstr ""
+
+#: inc/admin/theme-info.php:325
+msgid "Motivate 5 Star rating"
+msgstr ""
+
+#: inc/admin/theme-info.php:328
+msgid "Rate Us"
+msgstr ""
+
+#: inc/admin/theme-info.php:333
+msgid "Still have any question?"
+msgstr ""
+
+#: inc/admin/theme-info.php:336
+msgid "Don't hesitate to ask"
+msgstr ""
+
+#: inc/admin/theme-info.php:339
+msgid "Get Support"
+msgstr ""
+
+#: inc/customizer/all-theme-options.php:13
+msgid "Theme Options"
+msgstr ""
+
+#: inc/customizer/all-theme-options.php:38
+msgid "Hide Author"
+msgstr ""
+
+#: inc/customizer/all-theme-options.php:53
+msgid "Hide Date"
+msgstr ""
+
+#: inc/customizer/all-theme-options.php:68
+msgid "Hide Category"
+msgstr ""
+
+#: inc/customizer/all-theme-options.php:83
+msgid "Hide Tags"
+msgstr ""
+
+#: inc/customizer/all-theme-options.php:98
+msgid "Hide Comments"
+msgstr ""
+
+#: inc/customizer/all-theme-options.php:114
+msgid "Hide Social Icons"
+msgstr ""
+
+#: inc/customizer/all-theme-options.php:115
+msgid ""
+"Social icon will be displayed only when Advertise banner is not available"
+msgstr ""
+
+#: inc/customizer/all-theme-options.php:131
+msgid "Hide Social Icons from Info Bar"
+msgstr ""
+
+#: inc/customizer/header-section/colors.php:14
+msgid "Banner text Color"
+msgstr ""
+
+#: inc/customizer/header-section/colors.php:15
+msgid "Change effect on Banner title, description and button"
+msgstr ""
+
+#: inc/customizer/header-section/colors.php:26
+msgid "Theme Color"
+msgstr ""
+
+#: inc/customizer/header-section/colors.php:27
+msgid "Change Default theme Color"
+msgstr ""
+
+#: inc/customizer/header-section/header-image.php:16
+msgid "Display FullWidth Header Image"
+msgstr ""
+
+#: inc/customizer/header-section/header-image.php:29
+msgid "Display Header Image"
+msgstr ""
+
+#: inc/customizer/header-section/header-image.php:33
+msgid "Below Menu"
+msgstr ""
+
+#: inc/customizer/header-section/header-image.php:34
+msgid "Above Menu"
+msgstr ""
+
+#: inc/customizer/header-section/header-image.php:44
+msgid "Header Title"
+msgstr ""
+
+#: inc/customizer/header-section/header-image.php:55
+msgid "Header Description"
+msgstr ""
+
+#: inc/customizer/header-section/header-image.php:61 inc/functions.php:351
+msgid "Continue Reading"
+msgstr ""
+
+#: inc/customizer/header-section/header-image.php:66
+msgid "Button Text"
+msgstr ""
+
+#: inc/customizer/header-section/header-image.php:77
+msgid "Button Url"
+msgstr ""
+
+#: inc/customizer/header-section/layout.php:9
+msgid "Layout Settings"
+msgstr ""
+
+#: inc/customizer/header-section/layout.php:21
+msgid "Display Site Layout"
+msgstr ""
+
+#: inc/customizer/header-section/site-identity.php:14
+msgid "Display Site Branding"
+msgstr ""
+
+#: inc/customizer/header-section/site-identity.php:18
+msgid "Default Menu"
+msgstr ""
+
+#: inc/customizer/header-section/site-identity.php:19
+msgid "In Nav Menu"
+msgstr ""
+
+#: inc/customizer/header-section/site-identity.php:29
+msgid "Display Site Branding & Ad. Section"
+msgstr ""
+
+#: inc/customizer/header-section/site-identity.php:34
+msgid "Default Left"
+msgstr ""
+
+#: inc/customizer/header-section/site-identity.php:35
+msgid "Center"
+msgstr ""
+
+#: inc/customizer/header-section/site-identity.php:45
+msgid "Display Site Branding Resolution"
+msgstr ""
+
+#: inc/customizer/header-section/site-identity.php:50
+msgid "High Resolution"
+msgstr ""
+
+#: inc/customizer/header-section/site-identity.php:51
+msgid "Original Size"
+msgstr ""
+
+#: inc/functions.php:47
+msgid "on"
+msgstr ""
+
+#: inc/functions.php:311
+msgid "Search"
+msgstr ""
+
+#: inc/sidebar-widget.php:11
+msgid "Sidebar"
+msgstr ""
+
+#: inc/sidebar-widget.php:13
+msgid "Add widgets here."
+msgstr ""
+
+#: inc/sidebar-widget.php:23
+msgid "Header Advertise Section"
+msgstr ""
+
+#: inc/sidebar-widget.php:25
+msgid "Add Image widget"
+msgstr ""
+
+#: inc/sidebar-widget.php:35
+msgid "Footer Sidebar Area "
+msgstr ""
+
+#: inc/sidebar-widget.php:37
+msgid "Add footer widgets"
+msgstr ""
+
+#: inc/template-tags.php:82
+msgid " / "
+msgstr ""
+
+#: inc/template-tags.php:108
+#, php-format
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr ""
+
+#: inc/template-tags.php:126 template-parts/content-page.php:39
+#, php-format
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#: inc/upgrade-pro/class-customize.php:63
+msgid "Led"
+msgstr ""
+
+#: inc/upgrade-pro/class-customize.php:64
+msgid "Upgrade To Pro"
+msgstr ""
+
+#: pagination.php:11
+msgid "Previous page"
+msgstr ""
+
+#: pagination.php:12
+msgid "Next page"
+msgstr ""
+
+#: pagination.php:13
+msgid "Page"
+msgstr ""
+
+#: search.php:21
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: template-parts/content-none.php:24
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:37
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:44
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: template-parts/content-page.php:25
+msgid "Pages:"
+msgstr ""
