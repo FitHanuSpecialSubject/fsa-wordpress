@@ -18,9 +18,9 @@ $zon_display_page_single_featured_image = $zon_settings['zon_display_page_single
 				<article id="post-<?php the_ID(); ?>" <?php post_class();?>>
 					<?php if(has_post_thumbnail() && $zon_display_page_single_featured_image == 0 ){ ?>
 						<div class="post-image-content">
-							<figure class="post-featured-image">
-								<?php the_post_thumbnail(); ?>
-							</figure>
+							<!-- <figure class="post-featured-image">
+								<?php //the_post_thumbnail(); ?>
+							</figure> -->
 						</div><!-- end.post-image-content -->
 					<?php }
 					$zon_entry_meta_single = $zon_settings['zon_entry_meta_single']; ?>
