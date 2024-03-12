@@ -70,8 +70,7 @@ $zon_settings = zon_get_theme_options(); ?>
 						else:
 							echo '<div class="copyright">'; ?>
 							<a title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" target="_blank" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo get_bloginfo( 'name', 'display' ); ?></a> | 
-											<?php esc_html_e('Designed by:','zon'); ?> <a title="<?php echo esc_attr__( ' Theme Freesia', 'zon' );?>" target="_blank" href="<?php echo esc_url( 'https://themefreesia.com' ); ?>"><?php esc_html_e('Theme Freesia','zon');?></a> |
-											<?php date_i18n(__('Y','zon')) ; ?> <a title="<?php echo esc_attr__( 'WordPress', 'zon' );?>" target="_blank" href="<?php echo esc_url( __('https://wordpress.org','zon')  );?>"><?php esc_html_e('WordPress','zon'); ?></a>  | <?php echo '&copy; ' . esc_html__('Copyright All right reserved ','zon'); ?>
+											<?php esc_html_e('Designed & Developed by:','zon'); ?> SS1 2023 <a target="_blank" href="http://fb.com/quylaptrinh"> Coding </a> Team | <a  title="<?php echo esc_attr__( ' Theme Freesia', 'zon' );?>" target="_blank" href="<?php echo esc_url( '#' ); ?>"><?php esc_html_e('Theme Freesia','zon');?></a> | <?php echo '&copy; ' . esc_html__('Copyright All right reserved ','zon'); ?>
 										</div>
 						<?php endif; ?>
 					</div> <!-- end .copyright-wrap -->
