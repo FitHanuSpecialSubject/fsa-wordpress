@@ -18,3 +18,9 @@
     ```
     http://localhost/wordpress
     ```
+
+
+    ```
+    git clone https://github.com/FitHanuSpecialSubject/GA-Application-Java.git  
+    cd GA-Application-Java
+    ```
