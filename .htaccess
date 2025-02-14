@@ -5,7 +5,6 @@ RewriteBase /wordpress/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)/$ /$1 [L,R=301]
 RewriteRule . /wordpress/index.php [L]
 </IfModule>
 # END WordPress
