@@ -328,3 +328,4 @@ function zon_footer_menu_section(){
 	endif;
 }
 add_action( 'zon_footer_menu', 'zon_footer_menu_section' );
+
