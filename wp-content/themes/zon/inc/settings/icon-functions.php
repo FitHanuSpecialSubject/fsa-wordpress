@@ -57,7 +57,7 @@ if(!function_exists('zon_social_links_icons')) {
 		$social_links_icons = array(
 
 			'facebook.com'    	=> 'facebook-f',
-			'twitter.com'     	=> 'twitter',
+			'twitter.com'     	=> 'x-twitter',
 			'pinterest.com'   	=> 'pinterest-p',
 			'dribbble.com'    	=> 'dribbble',
 			'instagram.com'   	=> 'instagram',
