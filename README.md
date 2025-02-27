@@ -4,6 +4,7 @@
     ```
     https://github.com/leokhoa/laragon/releases/download/6.0.0/laragon-wamp.exe
     ```
+    ### LƯU Ý, CÀI ĐẶT VÀO Ổ C NHƯ MẶC ĐỊNH
 2. Bật cmd, nhập lần lượt từng lệnh như sau:
     ```
     mkdir C:\laragon\www\wordpress
@@ -19,3 +20,39 @@
     ```
     http://localhost/wordpress
     ```
+
+
+
+## Tạo hoặc import backup database
+
+1. Tạo backup
+
+#### Nếu máy đã cài python
+
+```
+python db-backup-create.py
+```
+
+#### Nếu máy chưa cài python
+
+```
+C:\laragon\bin\python\python-3.10\python db-backup-create.py
+```
+
+#### Nếu tên file bao gồm unknown-author, cài đặt email của bạn vào config của git (global) và tạo lại sẽ có tên
+
+2. Import backup
+
+#### Nếu máy đã cài python
+
+```
+python db-backup-import.py
+```
+
+#### Nếu máy chưa cài python
+
+```
+C:\laragon\bin\python\python-3.10\python db-backup-import.py
+```
+
+#### Command sẽ lựa chọn bản backup được tạo gần nhất để import
