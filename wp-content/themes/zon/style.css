@@ -4,10 +4,10 @@ Theme URI: https://themefreesia.com/themes/zon
 Author: Theme Freesia
 Author URI: https://themefreesia.com
 Description: Zon is a WordPress theme exclusively built for news, newspaper, magazine, publishing, Blog or review websites. It is clean, super flexible, fully responsive designs, amazing new features, complete 1-click website demos and lifetime free updates. Zon design can be used for any type of website. It consists Contactus Template, Gallery Template Zon Template, widgets and Sidebar. Get free support at https://tickets.themefreesia.com/ and View free demo sites at https://demo.themefreesia.com/zon/ and https://demo.themefreesia.com/daily-news/
-Version: 1.0.6
-Requires at least: 6.3
+Version: 1.0.5
+Requires at least: 6.0
 Requires PHP: 5.6
-Tested up to: 6.4
+Tested up to: 6.3.1
 Text Domain: zon
 License: GNU General Public License version 3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -1748,7 +1748,7 @@ video#wp-custom-header-video {
 	color: #007BB6;
 }
 
-.social-links li a[href*="angellist.com"]:hover {
+.social-links li a[href*="angel.co"]:hover {
 	color: #000000;
 }
 
@@ -2220,7 +2220,6 @@ video#wp-custom-header-video {
 	text-decoration: underline;
 }
 
-.wp-element-button,
 .entry-content a:hover {
 	text-decoration: none;
 }
