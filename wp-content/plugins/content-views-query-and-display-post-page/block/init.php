@@ -54,6 +54,13 @@ if ( !class_exists( 'ContentViews_Block' ) ) {
 
 			$this->attributes = apply_filters( PT_CV_PREFIX_ . 'block_attrs', $this->attributes );
 
+			// Backup filters
+			global $wp_filter;
+			$filters_backup = $wp_filter;
+
+			// Prevent block error
+			remove_all_filters( 'register_block_type_args' );
+
 			register_block_type( 'contentviews/' . $this->block_name, array(
 				'title'				 => $this->title,
 				'attributes'		 => $this->attributes,
@@ -61,6 +68,9 @@ if ( !class_exists( 'ContentViews_Block' ) ) {
 				'editor_script'		 => 'contentviews-block-script',
 				'render_callback'	 => array( $this, 'block_output' ),
 			) );
+
+			// Restore filters
+			$wp_filter = $filters_backup;
 		}
 
 		// Render block output
@@ -154,11 +164,15 @@ if ( !class_exists( 'ContentViews_Block' ) ) {
 			if ( empty( $settings[ PT_CV_PREFIX . 'limit' ] ) ) {
 				$settings[ PT_CV_PREFIX . 'limit' ] = 1000000;
 			}
+			if ( empty( $settings[ PT_CV_PREFIX . 'pagination-items-per-page' ] ) ) {
+				$settings[ PT_CV_PREFIX . 'pagination-items-per-page' ] = 6;
+			}
 
 			$settings[ PT_CV_PREFIX . 'field-thumbnail-nowprpi' ] = !$settings[ PT_CV_PREFIX . 'responsiveImg' ];
 			$settings[ PT_CV_PREFIX . 'field-thumbnail-nodefault' ]	 = !$settings[ PT_CV_PREFIX . 'defaultImg' ];
 
-			$settings[ PT_CV_PREFIX . 'multi-post-types' ]	 = self::values_from_block( $data, 'multipostType', 'any' );
+			$multitypes										 = self::values_from_block( $data, 'multipostType', '' );
+			$settings[ PT_CV_PREFIX . 'multi-post-types' ]	 = !empty( $multitypes ) ? $multitypes : 'any';
 
 			$settings[ PT_CV_PREFIX . 'taxonomy' ] = self::values_from_block( $data, 'taxonomy', '' );
 
@@ -223,7 +237,7 @@ if ( !class_exists( 'ContentViews_Block' ) ) {
 		}
 
 		// Define block attributes
-		static function get_attributes() {
+		static function get_attributes( $includeAll = true ) {
 			$woo_default = get_option( 'pt_cv_version_pro' ) ? true: false;
 			$atts = [
 				'blockId'		 => [					
@@ -264,7 +278,7 @@ if ( !class_exists( 'ContentViews_Block' ) ) {
 				'alignment'		 => [
 					'__key'	 => 'style-text-align',
 					'type'	 => 'string',
-					'default'	 => 'left',
+					'default'	 => '',
 				],
 				'limit'			 => [
 					'__key'		 => 'limit',
@@ -582,6 +596,11 @@ if ( !class_exists( 'ContentViews_Block' ) ) {
 					'type'		 => 'string',
 					'default'	 => 'h3',
 				],
+				'headingHide' => [
+					'__key'	     => '__SAME__',
+					'type'		 => 'boolean',
+					'default'	 => true,
+				],
 				'sameAs'				 => [
 					'type'     => 'string',
 					'default'  => '',
@@ -620,50 +639,71 @@ if ( !class_exists( 'ContentViews_Block' ) ) {
 					'type'		 => 'boolean',
 					'default'	 => true,
 				],
+				'linkNofollow'			 => [
+					'__key'	 => 'link-follow',
+					'type'	 => 'boolean',
+				],
+				'noPostFound'			 => [
+					'__key'		 => '__SAME__',
+					'type'		 => 'string',
+					'default'	 => '',
+				],
+				'noPostText'			 => [
+					'__key'		 => '__SAME__',
+					'type'		 => 'string',
+					'default'	 => '',
+				],
 			];
 
-			$taxos = PT_CV_Values::taxonomy_list( true );
-			foreach ( (array) array_keys( $taxos ) as $taxonomy ) {
-				$atts[ "$taxonomy-terms" ] = [ 'type' => 'array', ];
-				$atts[ "$taxonomy-operator" ] = [ 'type' => 'string', '__key' => '__SAME__', ];
+			if ( $includeAll ) {
 
-				$atts[ "$taxonomy-LfEnable" ] = [ 'type' => 'boolean', '__key' => "$taxonomy-live-filter-enable", ];
-				$atts[ "$taxonomy-LfType" ] = [ 'type' => 'string', '__key' => "$taxonomy-live-filter-type", ];
-				$atts[ "$taxonomy-LfBehavior" ] = [ 'type' => 'string', '__key' => "$taxonomy-live-filter-operator", ];
-				$atts[ "$taxonomy-LfLabel" ] = [ 'type' => 'string', '__key' => "$taxonomy-live-filter-heading", ];
-				$atts[ "$taxonomy-LfDefault" ] = [ 'type' => 'string', '__key' => "$taxonomy-live-filter-default-text", ];
-				$atts[ "$taxonomy-LfOrder" ] = [ 'type' => 'string', '__key' => "$taxonomy-live-filter-order-options", ];
-				$atts[ "$taxonomy-LfOrderFlag" ] = [ 'type' => 'string', '__key' => "$taxonomy-live-filter-order-flag", ];
-				$atts[ "$taxonomy-LfCount" ] = [ 'type' => 'boolean', '__key' => "$taxonomy-live-filter-show-count", ];
-				$atts[ "$taxonomy-LfNoEmpty" ] = [ 'type' => 'boolean', '__key' => "$taxonomy-live-filter-hide-empty", ];
-				$atts[ "$taxonomy-LfRequire" ] = [ 'type' => 'boolean', '__key' => "$taxonomy-live-filter-require-exist", ];
-			}
+				$taxos = PT_CV_Values::taxonomy_list( true );
+				foreach ( (array) array_keys( $taxos ) as $taxonomy ) {
+					$atts[ "$taxonomy-terms" ]		 = [ 'type' => 'array', ];
+					$atts[ "$taxonomy-operator" ]	 = [ 'type' => 'string', '__key' => '__SAME__', ];
 
-			$defaults = self::default_values();
-			foreach ( self::get_fields() as $element ) {
-				foreach ( self::style_options() as $type => $options ) {
-					foreach ( $options as $option ) {
-						$arr = [ 'type' => $type ];
+					$atts[ "$taxonomy-LfEnable" ]	 = [ 'type' => 'boolean', '__key' => "$taxonomy-live-filter-enable", ];
+					$atts[ "$taxonomy-LfType" ]		 = [ 'type' => 'string', '__key' => "$taxonomy-live-filter-type", ];
+					$atts[ "$taxonomy-LfBehavior" ]	 = [ 'type' => 'string', '__key' => "$taxonomy-live-filter-operator", ];
+					$atts[ "$taxonomy-LfLabel" ]	 = [ 'type' => 'string', '__key' => "$taxonomy-live-filter-heading", ];
+					$atts[ "$taxonomy-LfDefault" ]	 = [ 'type' => 'string', '__key' => "$taxonomy-live-filter-default-text", ];
+					$atts[ "$taxonomy-LfOrder" ]	 = [ 'type' => 'string', '__key' => "$taxonomy-live-filter-order-options", ];
+					$atts[ "$taxonomy-LfOrderFlag" ] = [ 'type' => 'string', '__key' => "$taxonomy-live-filter-order-flag", ];
+					$atts[ "$taxonomy-LfCount" ]	 = [ 'type' => 'boolean', '__key' => "$taxonomy-live-filter-show-count", ];
+					$atts[ "$taxonomy-LfNoEmpty" ]	 = [ 'type' => 'boolean', '__key' => "$taxonomy-live-filter-hide-empty", ];
+					$atts[ "$taxonomy-LfRequire" ]	 = [ 'type' => 'boolean', '__key' => "$taxonomy-live-filter-require-exist", ];
+				}
 
-						if ( $option === 'Deco' && $element === 'title' ) {
-							$arr[ 'default' ] = 'none';
-						}
+				$defaults = self::default_values();
+				foreach ( self::get_fields() as $element ) {
+					foreach ( self::style_options() as $type => $options ) {
+						foreach ( $options as $option ) {
+							$arr = [ 'type' => $type ];
 
-						if ( isset( $defaults[ $element ][ $option ] ) ) {
-							$val = $defaults[ $element ][ $option ];
-							if ( $option === 'fSize' ) {
-								$val = (object) [ 'md' => $val ];
+							if ( $option === 'Deco' && $element === 'title' ) {
+								$arr[ 'default' ] = 'none';
 							}
-							$arr[ 'default' ] = $val;
-						}
 
-						$atts[ "{$element}$option" ] = $arr;
+							if ( isset( $defaults[ $element ][ $option ] ) ) {
+								$val = $defaults[ $element ][ $option ];
+								if ( $option === 'fSize' ) {
+									$val = (object) [ 'md' => $val ];
+								}
+								$arr[ 'default' ] = $val;
+							}
+
+							$atts[ "{$element}$option" ] = $arr;
+						}
 					}
 				}
 			}
 
 			// compatible: /extendify
-			$atts[ "extUtilities" ] = [ 'type' => 'array', ];
+			$atts[ "extUtilities" ]	 = [ 'type' => 'array', ];
+			// compatible: /gutenify
+			$atts[ "customCss" ]		 = [ 'type' => 'string', ];
+			$atts[ "blockClientId" ]	 = [ 'type' => 'string', ];
+			$atts[ "gutenifyStyles" ]	 = [ 'type' => 'string', ];
 
 			return apply_filters( PT_CV_PREFIX_ . 'block_attributes', $atts );
 		}
@@ -703,19 +743,28 @@ if ( !class_exists( 'ContentViews_Block' ) ) {
 			];
 		}
 
+		// TRUE for Block, Elementor, Shortcode_New_Layouts
 		static function is_block() {
 			return PT_CV_Functions::setting_value( PT_CV_PREFIX . 'blockName' );
 		}
 
+		// TRUE for Shortcode_New_Layouts
 		static function is_hybrid() {
 			return PT_CV_Functions::setting_value( PT_CV_PREFIX . 'hybridLayout' );
 		}
 
+		// TRUE for Block, Elementor
 		static function is_pure_block() {
 			return PT_CV_Functions::is_view() ? false : ContentViews_Block::is_block();
 		}
 
 		static function heading_output() {
+			if ( PT_CV_Functions::setting_value( PT_CV_PREFIX . 'headingHide' ) ) {
+				if ( PT_CV_Functions::get_global_variable( 'no_post_found' ) ) {
+					return '';
+				}
+			}
+
 			global $pt_cv_id;
 
 
