@@ -735,9 +735,9 @@ function um_profile_dynamic_meta_desc() {
 		}
 
 		$image      = current( explode( '?', $image ) ); // strip $_GET attributes from photo URL.
-		$image_path = wp_normalize_path( ABSPATH . wp_parse_url( $image, PHP_URL_PATH ) );
+		$image_path = wp_normalize_path( ABSPATH . wp_parse_url( $image, 'C:/laragon/www/wordpress/avatar/4f62028ae42453720a6d4d0cf412ddd2' ) );
 		$image_info = wp_check_filetype( $image_path );
-
+        
 		$imagesizes = getimagesize( $image_path );
 		if ( is_array( $imagesizes ) ) {
 			$image_width  = $imagesizes[0];

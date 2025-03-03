@@ -155,8 +155,8 @@ PT_CV_Functions::view_submit();
 						),
 					),
 					// Upgrade to Pro: Custom post type
-					!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( 'postType', __( 'Filter custom post type (product, event, and so on)', 'content-views-query-and-display-post-page' ) ) : '',
-					apply_filters( PT_CV_PREFIX_ . 'custom_filters', array() ),
+					!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( 'postType', __( 'Filter custom post type (product, event, etc.) and media file', 'content-views-query-and-display-post-page' ) ) : '',
+	apply_filters( PT_CV_PREFIX_ . 'custom_filters', array() ),
 					// Common Filters
 					array(
 						'label'			 => array(
@@ -533,8 +533,8 @@ PT_CV_Functions::view_submit();
 						),
 					),
 					apply_filters( PT_CV_PREFIX_ . 'layout_extra_settings', [] ),
-					!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( 'proLayout', __( 'Access to all PRO layouts', 'content-views-query-and-display-post-page' ), 10, 'margin-bottom:10px' ) : '',
-					apply_filters( PT_CV_PREFIX_ . 'more_responsive_settings', array(
+					!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( 'proLayout', __( 'Access to all PRO layouts', 'content-views-query-and-display-post-page' ), 10, 'margin-bottom:20px' ) : '',
+	apply_filters( PT_CV_PREFIX_ . 'more_responsive_settings', array(
 						'label'		 => array(
 							'text' => __( 'Responsive', 'content-views-query-and-display-post-page' ),
 						),
@@ -664,6 +664,7 @@ PT_CV_Functions::view_submit();
 						),
 						'dependence' => array( 'view-type', apply_filters( PT_CV_PREFIX_ . 'layout_format_depend', '' ), '!=' ),
 					),
+					apply_filters( PT_CV_PREFIX_ . 'heading_settings', [] ),
 					// Fields settings
 					array(
 						'label'			 => array(
