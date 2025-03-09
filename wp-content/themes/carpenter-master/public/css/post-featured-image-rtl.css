@@ -1,0 +1,1 @@
+@keyframes image-shine{to{right:125%}}.is-style-image-shine{overflow:hidden;position:relative}.is-style-image-shine:before{background:linear-gradient(-90deg,#fff0 0,#ffffff4d);content:"";display:block;height:100%;right:-75%;position:absolute;top:0;transform:skewX(25deg);width:50%;z-index:2}.is-style-image-shine:hover:before{animation:image-shine .75s}

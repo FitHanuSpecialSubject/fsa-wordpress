@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"title": "Equal Height",
+	"slug": "post-template",
+	"blockTypes": [ "core/post-template" ],
+	"styles": {
+		"css": "& > li {display: flex;} & > li > div {flex: 1 1 100%;}"
+	}
+}
