@@ -156,3 +156,11 @@ if ( ! function_exists( 'twentytwentyfive_format_binding' ) ) :
 		}
 	}
 endif;
+
+require_once 'functions_1.php';
+
+# Custom function for testing
+function init() {
+	$date = get_date_fmt();
+	return $date;
+}
