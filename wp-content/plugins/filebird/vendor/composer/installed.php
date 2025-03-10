@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'ninjateam/filebird',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '4c460d49e7ab9da6a0f866b35ba16b3452a58d17',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '0f5d2bc062acf9f468e94c3d00f2f3c8e1dc16a9',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'ninjateam/filebird' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '4c460d49e7ab9da6a0f866b35ba16b3452a58d17',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '0f5d2bc062acf9f468e94c3d00f2f3c8e1dc16a9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

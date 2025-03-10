@@ -42,7 +42,7 @@ class PT_Content_Views {
 	 */
 	private function __construct() {
 		// Load plugin text domain
-		add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ), 11 );
+		add_action( 'init', array( $this, 'load_plugin_textdomain' ), 11 );
 
 		// Register content
 		add_action( 'init', array( $this, 'content_register' ) );
@@ -171,14 +171,14 @@ class PT_Content_Views {
 	 *
 	 * @return   array|false    The blog ids, false if no matches.
 	 */
-	public static function get_blog_ids() {
+	public static function get_blog_ids( $limits = null ) {
 
 		global $wpdb;
-
+		$limit	 = $limits ? 'LIMIT ' . intval( $limits ) : '';
 		// Get an array of blog ids
 		$sql = "SELECT blog_id FROM $wpdb->blogs
 			WHERE archived = '0' AND spam = '0'
-			AND deleted = '0'";
+			AND deleted = '0' $limit";
 
 		return $wpdb->get_col( $sql );
 	}
