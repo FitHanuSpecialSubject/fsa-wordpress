@@ -1,42 +1,84 @@
 <?php
 /**
  * Title: Sidebar
- * Slug: twentytwentyfive/hidden-sidebar
+ * Slug: twentytwentyfour/hidden-sidebar
  * Inserter: no
- *
- * @package WordPress
- * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
  */
-
 ?>
-<!-- wp:heading {"style":{"typography":{"fontStyle":"normal","fontWeight":"600","textTransform":"uppercase","letterSpacing":"1.6px"}},"fontSize":"small"} -->
-<h2 class="wp-block-heading has-small-font-size" style="font-style:normal;font-weight:600;letter-spacing:1.6px;text-transform:uppercase"><?php esc_html_e( 'Other Posts', 'twentytwentyfive' ); ?></h2>
-<!-- /wp:heading -->
+<!-- wp:group {"style":{"spacing":{"blockGap":"36px","padding":{"right":"0","left":"0"}}},"layout":{"type":"default"}} -->
+<div class="wp-block-group" style="padding-right:0;padding-left:0">
+	<!-- wp:group {"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group" style="margin-top:0;margin-bottom:0">
+		<!-- wp:avatar {"size":80,"style":{"border":{"radius":"16px"}}} /-->
 
-<!-- wp:spacer {"height":"var:preset|spacing|40"} -->
-<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer -->
-
-<!-- wp:query {"query":{"perPage":4,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"taxQuery":null,"parents":[]}} -->
-<div class="wp-block-query">
-	<!-- wp:post-template -->
-		<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+		<!-- wp:group {"style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
 		<div class="wp-block-group">
-			<!-- wp:post-title {"isLink":true,"fontSize":"medium"} /-->
-			<!-- wp:post-date {"fontSize":"small","isLink":true} /-->
+			<!-- wp:heading {"style":{"typography":{"fontSize":"1.6rem"}}} -->
+			<h2 class="wp-block-heading" style="font-size:1.6rem"><?php esc_html_e( 'About the author', 'twentytwentyfour' ); ?></h2>
+			<!-- /wp:heading -->
+
+			<!-- wp:post-author-biography {"fontSize":"small"} /-->
+		</div>
+		<!-- /wp:group -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:separator {"backgroundColor":"contrast","className":"is-style-wide"} -->
+	<hr class="wp-block-separator has-text-color has-contrast-color has-alpha-channel-opacity has-contrast-background-color has-background is-style-wide"/>
+	<!-- /wp:separator -->
+
+	<!-- wp:group {"style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group">
+		<!-- wp:heading {"style":{"typography":{"fontSize":"1.6rem"}}} -->
+		<h2 class="wp-block-heading" style="font-size:1.6rem"><?php esc_html_e( 'Popular Categories', 'twentytwentyfour' ); ?></h2>
+		<!-- /wp:heading -->
+
+		<!-- wp:categories {"showHierarchy":true,"showPostCounts":true,"fontSize":"small"} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:separator {"backgroundColor":"contrast","className":"is-style-wide"} -->
+	<hr class="wp-block-separator has-text-color has-contrast-color has-alpha-channel-opacity has-contrast-background-color has-background is-style-wide"/>
+	<!-- /wp:separator -->
+
+	<!-- wp:group {"style":{"spacing":{"blockGap":"26px"}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group">
+		<!-- wp:group {"style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+		<div class="wp-block-group">
+			<!-- wp:heading {"style":{"typography":{"fontSize":"1.6rem"}}} -->
+			<h2 class="wp-block-heading" style="font-size:1.6rem"><?php esc_html_e( 'Useful Links', 'twentytwentyfour' ); ?></h2>
+			<!-- /wp:heading -->
+
+			<!-- wp:paragraph {"fontSize":"small"} -->
+			<p class="has-small-font-size"><?php esc_html_e( 'Links I found useful and wanted to share.', 'twentytwentyfour' ); ?></p>
+			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->
 
-		<!-- wp:spacer {"height":"var:preset|spacing|20"} -->
-		<div style="height:var(--wp--preset--spacing--20)" aria-hidden="true" class="wp-block-spacer"></div>
-		<!-- /wp:spacer -->
-	<!-- /wp:post-template -->
+		<!-- wp:navigation {"overlayMenu":"never","layout":{"type":"flex","orientation":"vertical"},"style":{"typography":{"fontStyle":"normal","fontWeight":"400"},"spacing":{"blockGap":"var:preset|spacing|10"}},"fontSize":"small"} -->
+		<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Latest inflation report', 'twentytwentyfour' ); ?>","url":"#","className":"is-style-arrow-link","style":{"typography":{"textDecoration":"underline"}}} /-->
+		<!-- wp:navigation-link {"label":"<?php esc_html_e( 'Financial apps for families', 'twentytwentyfour' ); ?>","url":"#","className":"is-style-arrow-link","style":{"typography":{"textDecoration":"underline"}}} /-->
+		<!-- /wp:navigation -->
+	</div>
+	<!-- /wp:group -->
 
-	<!-- wp:query-no-results -->
-		<!-- wp:paragraph {"placeholder":"<?php esc_attr_e( 'Add text or blocks that will display when a query returns no results.', 'twentytwentyfive' ); ?>","fontSize":"medium"} -->
-		<p class="has-medium-font-size"><?php echo esc_html_x( 'Sorry, but nothing was found. Please try a search with different keywords.', 'Message explaining that there are no results returned from a search.', 'twentytwentyfive' ); ?></p>
-		<!-- /wp:paragraph -->
-	<!-- /wp:query-no-results -->
+	<!-- wp:separator {"backgroundColor":"contrast","className":"is-style-wide"} -->
+	<hr class="wp-block-separator has-text-color has-contrast-color has-alpha-channel-opacity has-contrast-background-color has-background is-style-wide"/>
+	<!-- /wp:separator -->
+
+	<!-- wp:group {"style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
+	<div class="wp-block-group">
+		<!-- wp:heading {"style":{"typography":{"fontSize":"1.6rem"}}} -->
+		<h2 class="wp-block-heading" style="font-size:1.6rem"><?php esc_html_e( 'Search the website', 'twentytwentyfour' ); ?></h2>
+		<!-- /wp:heading -->
+
+		<!-- wp:search {"label":"<?php echo esc_attr_x( 'Search', 'search form label', 'twentytwentyfour' ); ?>","showLabel":false,"placeholder":"<?php echo esc_attr_x( 'Search...', 'search form placeholder', 'twentytwentyfour' ); ?>","width":100,"widthUnit":"%","buttonText":"<?php echo esc_attr_x( 'Search', 'search form label', 'twentytwentyfour' ); ?>"} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:spacer {"height":"var:preset|spacing|10"} -->
+	<div style="height:var(--wp--preset--spacing--10)" aria-hidden="true" class="wp-block-spacer">
+	</div>
+	<!-- /wp:spacer -->
 </div>
-<!-- /wp:query -->
+<!-- /wp:group -->
