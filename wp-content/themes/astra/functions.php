@@ -209,3 +209,91 @@ require_once ASTRA_THEME_DIR . 'inc/core/markup/class-astra-markup.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-filters.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-hooks.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-functions.php';
+
+function my_custom_account_page() {
+    ob_start();
+
+    if (is_user_logged_in()) {
+        $current_user = wp_get_current_user();
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_profile'])) {
+            $user_id = $current_user->ID;
+            $display_name = sanitize_text_field($_POST['display_name']);
+            $email = sanitize_email($_POST['email']);
+            $bio = sanitize_textarea_field($_POST['bio']);
+
+            wp_update_user([
+                'ID'           => $user_id,
+                'display_name' => $display_name,
+                'user_email'   => $email,
+            ]);
+            update_user_meta($user_id, 'description', $bio);
+
+            echo "<p style='color: green;'>Profile updated successfully!</p>";
+        }
+
+        ?>
+        <h1>Welcome, <?php echo esc_html($current_user->display_name); ?>!</h1>
+        <p><strong>Email:</strong> <?php echo esc_html($current_user->user_email); ?></p>
+        <p><strong>Username:</strong> <?php echo esc_html($current_user->user_login); ?></p>
+        <p><strong>Bio:</strong> <?php echo esc_html(get_the_author_meta('description', $current_user->ID)); ?></p>
+
+        <h2>Update Profile</h2>
+        <form method="POST">
+            <label for="display_name">Display Name:</label>
+            <input type="text" name="display_name" value="<?php echo esc_attr($current_user->display_name); ?>" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" value="<?php echo esc_attr($current_user->user_email); ?>" required>
+
+            <label for="bio">Bio:</label>
+            <textarea name="bio"><?php echo esc_textarea(get_the_author_meta('description', $current_user->ID)); ?></textarea>
+
+            <button type="submit" name="update_profile">Update Profile</button>
+        </form>
+
+        <a href="<?php echo wp_logout_url(home_url()); ?>">Logout</a>
+
+        <?php
+    } else {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
+            $creds = [
+                'user_login'    => $_POST['username'],
+                'user_password' => $_POST['password'],
+                'remember'      => true
+            ];
+            $user = wp_signon($creds, false);
+
+            if (!is_wp_error($user)) {
+                wp_redirect(home_url('/account'));
+                exit;
+            } else {
+                echo "<p style='color: red;'>Login failed! Please try again.</p>";
+            }
+        }
+        ?>
+
+        <p><a href="<?php echo wp_login_url(home_url('/account')); ?>">Login</a></p>
+
+        wp_redirect(home_url('/wp-signup.php'));
+
+        <?php
+    }
+
+    return ob_get_clean();
+}
+
+add_shortcode('my_account', 'my_custom_account_page');
+
+function add_account_nav_item($items, $args) {
+    if ($args->theme_location == 'primary') {
+        $account_url = home_url('/my-account');
+        if (is_user_logged_in()) {
+            $items .= '<li class="menu-item"><a href="' . $account_url . '">My Account</a></li>';
+        } else {
+            $items .= '<li class="menu-item"><a href="' . wp_login_url($account_url) . '">Login</a></li>';
+        }
+    }
+    return $items;
+}
+add_filter('wp_nav_menu_items', 'add_account_nav_item', 10, 2);
