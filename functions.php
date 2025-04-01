@@ -204,3 +204,79 @@ if ( ! function_exists( 'twentytwentyfour_pattern_categories' ) ) :
 endif;
 
 add_action( 'init', 'twentytwentyfour_pattern_categories' );
+
+function custom_home_content() {
+    $args = array(
+        'post_type'      => 'post',
+        'posts_per_page' => 3,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    );
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        echo '<div class="home-posts">';
+        while ($query->have_posts()) {
+            $query->the_post();
+            echo '<h2><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
+            echo '<p>' . get_the_excerpt() . '</p>';
+        }
+        echo '</div>';
+    }
+    wp_reset_postdata();
+}
+
+function custom_about_content() {
+    $about_page = get_page_by_path('about');
+    if ($about_page) {
+        echo '<h1>' . $about_page->post_title . '</h1>';
+        echo '<div>' . apply_filters('the_content', $about_page->post_content) . '</div>';
+    } else {
+        echo '<p>Chưa có nội dung.</p>';
+    }
+}
+
+function custom_contact_form() {
+    ?>
+    <form method="post">
+        <input type="text" name="name" placeholder="Tên của bạn" required>
+        <input type="email" name="email" placeholder="Email của bạn" required>
+        <textarea name="message" placeholder="Nội dung" required></textarea>
+        <button type="submit" name="send_message">Gửi</button>
+    </form>
+    <?php
+}
+
+if (isset($_POST['send_message'])) {
+    $to = 'your-email@example.com';
+    $subject = 'Liên hệ từ ' . $_POST['name'];
+    $message = $_POST['message'];
+    $headers = 'From: ' . $_POST['email'];
+
+    wp_mail($to, $subject, $message, $headers);
+    echo '<p>Gửi thành công!</p>';
+}
+
+function custom_blog_posts() {
+    $args = array(
+        'post_type'      => 'post',
+        'posts_per_page' => 5,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    );
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        echo '<div class="blog-posts">';
+        while ($query->have_posts()) {
+            $query->the_post();
+            echo '<h2><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
+            echo '<p>' . get_the_excerpt() . '</p>';
+        }
+        echo '</div>';
+    }
+    wp_reset_postdata();
+}
+
