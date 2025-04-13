@@ -25,7 +25,6 @@ $user_id = um_user('ID');
         box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
 
-    /* Cột bên trái */
     .um-profile-left {
         width: 30%;
         background: #2c3e50;
@@ -112,16 +111,14 @@ $user_id = um_user('ID');
     .um-profile-left .um-logout-button:hover {
         background: #c0392b;
     }
-    /* Cột bên phải */
     .um-profile-right {
         width: 70%;
         display: flex;
     }
 
-    /* Tab content */
     .tab-content-area {
         flex: 1;
-        padding: 30px;
+        padding: 30px 30px 30px 30px;
         border-right: 1px solid #eee;
         max-height: 700px;
         overflow-y: auto;
@@ -129,10 +126,12 @@ $user_id = um_user('ID');
 
     .tab-content {
         display: none;
+        width: 100%;
     }
 
     .tab-content.active {
         display: block;
+        width: 100%;
     }
 
     /* Sidebar tab */
@@ -165,7 +164,6 @@ $user_id = um_user('ID');
         margin-bottom: 5px;
     }
 
-    /* Bảng thông tin */
     .um-profile-table {
         width: 100%;
         border-collapse: collapse;
@@ -251,24 +249,46 @@ $user_id = um_user('ID');
         color: #555;
     }
 
-    /* Bài viết */
     #posts {
-        max-height: 600px;
         overflow-y: auto;
+        width: auto;
+        border: 1px solid black;
     }
 
-    #posts div {
-        margin-bottom: 25px;
-        padding-bottom: 15px;
+    .post-item {
         border-bottom: 1px solid #eee;
+        width: 100%;
     }
 
-    #posts h4 {
-        margin-bottom: 5px;
+    .post-item h4 {
+        font-size: 18px;
+        width: 100%;
     }
 
-    #posts small {
+    .post-item h4 a {
+        color: #2c3e50;
+        text-decoration: none;
+        transition: color 0.3s;
+        display: block;
+        width: 100%;
+    }
+
+    .post-item h4 a:hover {
+        color: #3498db;
+    }
+
+    .post-date {
+        display: block;
+        font-size: 13px;
         color: #888;
+        width: 100%;
+    }
+
+    .post-excerpt {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #555;
+        width: 100%;
     }
 
     #edit-profile {
@@ -404,23 +424,22 @@ $user_id = um_user('ID');
         <h2><?php echo strtoupper( um_user('display_name') ); ?></h2>
         <div class="sub-title">PGS.TS <?php echo um_user('full_name'); ?></div>
         <div class="faculty-info">
-            Faculty of Information Technology,<br>
+            Faculty of Information Technology,
             Haiphong University, Vietnam
         </div>
-        <div class="position-info">
-            Associate Professor in Computer Science<br>
-            Head of Faculty of Information Technology
+        <div>
+            <p><?php echo um_user('description'); ?></p>
         </div>
         <div class="social-title">Research and Social ID</div>
         <div class="social-icons">
             <a href="#"><i class="fas fa-envelope"></i></a>
             <a href="#"><i class="fab fa-researchgate"></i></a>
             <a href="#"><i class="fab fa-orcid"></i></a>
-            <?php if ( um_user('facebook') ) : ?>
-                <a href="<?php echo esc_url( um_user('facebook') ); ?>" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-            <?php endif; ?>
+            <a href="<?php echo esc_url( um_user('facebook') ); ?>" target="_blank">
+                <i class="fab fa-facebook-f">
+                        <?php if ( um_user('facebook') ) : ?><?php endif; ?>
+                    </i>
+            </a>
         </div>
         <div class="logout-area">
             <a href="<?php echo wp_logout_url( home_url() ); ?>" class="um-logout-button">Logout</a>
@@ -512,10 +531,10 @@ $user_id = um_user('ID');
                     if ( ! empty( $posts ) ) :
                         foreach ( $posts as $post ) :
                             setup_postdata( $post ); ?>
-                            <div style="margin-bottom: 25px; border-bottom: 1px solid #ddd; padding-bottom: 15px;">
-                                <h4 style="margin-bottom: 5px;"><a href="<?php the_permalink(); ?>" target="_blank"><?php the_title(); ?></a></h4>
-                                <small style="color: #888;"><?php echo get_the_date(); ?></small>
-                                <p><?php echo wp_trim_words( get_the_excerpt(), 20, '...' ); ?></p>
+                            <div class="post-item">
+                                <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                                <span class="post-date"><?php echo get_the_date(); ?></span>
+                                <div class="post-excerpt"><?php echo wp_trim_words( get_the_excerpt(), 30, '...' ); ?></div>
                             </div>
                         <?php
                         endforeach;
@@ -535,7 +554,7 @@ $user_id = um_user('ID');
                         <tr>
                             <td><i class="fas fa-map-marker-alt"></i></td>
                             <td>Address:</td>
-                            <td>Haiphong, Vietnam</td>
+                            <td><?php echo um_user('address'); ?></td>
                         </tr>
                         <tr>
                             <td><i class="fas fa-envelope"></i></td>
@@ -553,9 +572,9 @@ $user_id = um_user('ID');
                             <td><?php echo um_user('user_url'); ?></td>
                         </tr>
                         <tr>
-                            <td><i class="fab fa-skype"></i></td>
-                            <td>Skype:</td>
-                            <td><?php echo um_user('skype'); ?></td>
+                            <td><i class="fab fa-facebook"></i></td>
+                            <td>Facebook:</td>
+                            <td><?php echo um_user('facebook'); ?></td>
                         </tr>
                         <tr>
                             <td><i class="fab fa-google"></i></td>
