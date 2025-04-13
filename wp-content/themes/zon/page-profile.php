@@ -14,14 +14,17 @@ $user_id = um_user('ID');
         font-family: Arial, sans-serif;
         font-size: 16px;
         margin: 0;
-        background: #f5f5f5;
+        background:rgb(7, 111, 171);
+    }
+    
+    .site-content {
+        background:rgb(50, 51, 51);
     }
 
     .um-custom-profile {
         display: flex;
         max-width: 1200px;
         margin: 40px auto;
-        background: #fff;
         box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
 
@@ -90,7 +93,7 @@ $user_id = um_user('ID');
     }
 
     .um-profile-left .social-icons a:hover {
-        color: #3498db;
+        color:rgb(120, 123, 125);
     }
 
     .um-profile-left .logout-area {
@@ -114,31 +117,34 @@ $user_id = um_user('ID');
     .um-profile-right {
         width: 70%;
         display: flex;
+        background-color: none;
     }
 
     .tab-content-area {
         flex: 1;
+        justify-content: center;
         padding: 30px 30px 30px 30px;
         border-right: 1px solid #eee;
         max-height: 700px;
         overflow-y: auto;
+        background-color: white;
     }
 
     .tab-content {
         display: none;
-        width: 100%;
     }
 
     .tab-content.active {
         display: block;
-        width: 100%;
     }
 
     /* Sidebar tab */
     .tab-sidebar {
         width: 100px;
-        background: #f8f8f8;
+        height: min-content;
         padding-top: 30px;
+        background: white;
+        border-left: none;
     }
 
     .tab-btn {
@@ -154,9 +160,8 @@ $user_id = um_user('ID');
     }
 
     .tab-btn:hover, .tab-btn.active {
-        background: #eee;
-        border-left: 4px solid #0073aa;
-        color: #0073aa;
+        background: rgb(118, 121, 123);
+        color:rgb(87, 89, 90);
     }
 
     .tab-btn i {
@@ -252,7 +257,6 @@ $user_id = um_user('ID');
     #posts {
         overflow-y: auto;
         width: auto;
-        border: 1px solid black;
     }
 
     .post-item {
@@ -441,9 +445,9 @@ $user_id = um_user('ID');
                     </i>
             </a>
         </div>
-        <div class="logout-area">
+        <!-- <div class="logout-area">
             <a href="<?php echo wp_logout_url( home_url() ); ?>" class="um-logout-button">Logout</a>
-        </div>
+        </div> -->
     </div>
 
     <div class="um-profile-right">
