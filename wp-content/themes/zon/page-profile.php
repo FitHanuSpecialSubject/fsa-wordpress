@@ -14,7 +14,6 @@ $user_id = um_user('ID');
         font-family: Arial, sans-serif;
         font-size: 16px;
         margin: 0;
-        background:rgb(7, 111, 171);
     }
     
     .site-content {
@@ -26,6 +25,7 @@ $user_id = um_user('ID');
         max-width: 1200px;
         margin: 40px auto;
         box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        gap: 20px;
     }
 
     .um-profile-left {
@@ -118,6 +118,7 @@ $user_id = um_user('ID');
         width: 70%;
         display: flex;
         background-color: none;
+        gap: 20px;
     }
 
     .tab-content-area {
@@ -132,17 +133,27 @@ $user_id = um_user('ID');
 
     .tab-content {
         display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        transform: translateY(10px);
     }
 
     .tab-content.active {
         display: block;
+        opacity: 1;
+        transform: translateY(0);
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 
     /* Sidebar tab */
     .tab-sidebar {
         width: 100px;
         height: min-content;
-        padding-top: 30px;
         background: white;
         border-left: none;
     }
@@ -151,16 +162,16 @@ $user_id = um_user('ID');
         display: block;
         padding: 20px;
         text-align: center;
-        background: none;
         border: none;
         width: 100%;
         cursor: pointer;
-        border-left: 4px solid transparent;
         transition: all 0.2s;
+        background-color: rgb(100, 99, 99);
+        color:rgb(255, 255, 255);
     }
 
     .tab-btn:hover, .tab-btn.active {
-        background: rgb(118, 121, 123);
+        background: rgb(255, 255, 255);
         color:rgb(87, 89, 90);
     }
 
@@ -426,7 +437,7 @@ $user_id = um_user('ID');
     <div class="um-profile-left">
         <?php echo get_avatar( $user_id, 150 ); ?>
         <h2><?php echo strtoupper( um_user('display_name') ); ?></h2>
-        <div class="sub-title">PGS.TS <?php echo um_user('full_name'); ?></div>
+        <div class="sub-title"><?php echo um_user('full_name'); ?></div>
         <div class="faculty-info">
             Faculty of Information Technology,
             Haiphong University, Vietnam
@@ -445,9 +456,9 @@ $user_id = um_user('ID');
                     </i>
             </a>
         </div>
-        <!-- <div class="logout-area">
+        <div class="logout-area">
             <a href="<?php echo wp_logout_url( home_url() ); ?>" class="um-logout-button">Logout</a>
-        </div> -->
+        </div>
     </div>
 
     <div class="um-profile-right">
@@ -656,13 +667,32 @@ $user_id = um_user('ID');
 <script>
 function showTab(tabId) {
     const contents = document.querySelectorAll('.tab-content');
-    contents.forEach(c => c.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-
     const btns = document.querySelectorAll('.tab-btn');
+    
+    contents.forEach(c => {
+        if (c.classList.contains('active')) {
+            c.style.opacity = '0';
+            c.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                c.classList.remove('active');
+            }, 300); 
+        }
+    });
+    
     btns.forEach(btn => btn.classList.remove('active'));
-    const clickedBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
-    if (clickedBtn) clickedBtn.classList.add('active');
+    
+    setTimeout(() => {
+        const activeTab = document.getElementById(tabId);
+        activeTab.classList.add('active');
+        setTimeout(() => {
+            activeTab.style.opacity = '1';
+            activeTab.style.transform = 'translateY(0)';
+        }, 10);
+        
+        
+        const clickedBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+        if (clickedBtn) clickedBtn.classList.add('active');
+    }, 300);
 }
 </script>
 
