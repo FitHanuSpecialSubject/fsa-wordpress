@@ -734,24 +734,31 @@ function um_profile_dynamic_meta_desc() {
 			$image = um_get_user_avatar_url( $user_id, 'original' );
 		}
 
-		$image      = current( explode( '?', $image ) ); // strip $_GET attributes from photo URL.
-		$image_path = wp_normalize_path( ABSPATH . wp_parse_url( $image, 'C:/laragon/www/wordpress/avatar/4f62028ae42453720a6d4d0cf412ddd2' ) );
-		$image_info = wp_check_filetype( $image_path );
-        
-		$imagesizes = getimagesize( $image_path );
-		if ( is_array( $imagesizes ) ) {
-			$image_width  = $imagesizes[0];
-			$image_height = $imagesizes[1];
+		$image_info   = array();
+		$image_width  = $image_size;
+		$image_height = $image_size;
+		if ( false === strpos( $image, 'gravatar.com' ) ) {
+			// Ignore Gravatar image here and handler a real image.
+			$image      = current( explode( '?', $image ) ); // strip $_GET attributes from photo URL.
+			// $image_path = wp_normalize_path( ABSPATH . wp_parse_url( $image, PHP_URL_PATH ) );
+			$image_path = str_replace( site_url(), ABSPATH, $image );
+			$image_path = wp_normalize_path( $image_path );
+
+			$image_info = wp_check_filetype( $image_path );
+			$imagesizes = getimagesize( $image_path );
+			if ( is_array( $imagesizes ) ) {
+				list( $image_width, $image_height ) = $imagesizes;
+			}
 		} else {
-			$image_width  = $image_size;
-			$image_height = $image_size;
+			// Gravatar image.
+			$image_path = esc_url_raw( $image );
 		}
 
 		$person = array(
-			'@context'     => 'https://schema.org',
-			'@type'        => 'ProfilePage',
-			'dateCreated'  => um_user( 'user_registered' ),
-			'mainEntity'   => array(
+			'@context'    => 'https://schema.org',
+			'@type'       => 'ProfilePage',
+			'dateCreated' => um_user( 'user_registered' ),
+			'mainEntity'  => array(
 				'@type'         => 'Person',
 				'name'          => esc_attr( $title ),
 				'alternateName' => um_user( 'user_login' ),
@@ -813,7 +820,7 @@ function um_profile_dynamic_meta_desc() {
 		<?php if ( is_ssl() ) { ?>
 			<meta property="og:image:secure_url" content="<?php echo esc_url( $image ); ?>"/>
 		<?php } ?>
-		<?php if ( $image_info['type'] ) { ?>
+		<?php if ( ! empty( $image_info['type'] ) ) { ?>
 			<meta property="og:image:type" content="<?php echo esc_attr( $image_info['type'] ); ?>" />
 		<?php } ?>
 		<meta property="og:url" content="<?php echo esc_url( $url ); ?>"/>

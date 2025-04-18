@@ -328,3 +328,10 @@ function zon_footer_menu_section(){
 	endif;
 }
 add_action( 'zon_footer_menu', 'zon_footer_menu_section' );
+
+// Profile adding, adding fontawesome
+
+function add_custom_profile_assets() {
+    wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+}
+add_action('wp_enqueue_scripts', 'add_custom_profile_assets');
