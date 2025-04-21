@@ -69,10 +69,13 @@ $zon_settings = zon_get_theme_options(); ?>
 							dynamic_sidebar( 'zon_footer_options' );
 						else:
 							echo '<div class="copyright">'; ?>
-							<a title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" target="_blank" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo get_bloginfo( 'name', 'display' ); ?></a> | 
-											<?php esc_html_e('Designed by:','zon'); ?> <a title="<?php echo esc_attr__( 'Theme Freesia', 'zon' ); ?>" target="_blank" href="<?php echo esc_url( 'https://themefreesia.com' ); ?>"><?php esc_html_e('Theme Freesia','zon');?></a> |
-											<?php date_i18n(__('Y','zon')) ; ?> <a title="<?php echo esc_attr__( 'WordPress', 'zon' );?>" target="_blank" href="<?php echo esc_url( __('https://wordpress.org','zon')  );?>"><?php esc_html_e('WordPress','zon'); ?></a>  | <?php echo '&copy; ' . esc_html__('Copyright All right reserved ','zon'); ?>
-										</div>
+
+								<a title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" target="_blank" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo get_bloginfo( 'name', 'display' ); ?></a> |
+								<a title="Falcuty of Information Technology" target="_blank" href="https://lms.fit.hanu.vn/"> Falcuty of Information Technology </a> |
+								<a title="Hanu" target="_blank" href="https://www.hanu.vn"> Hanoi University </a>
+							
+							</div>
+
 						<?php endif; ?>
 					</div> <!-- end .copyright-wrap -->
 					<div style="clear:both;"></div>
