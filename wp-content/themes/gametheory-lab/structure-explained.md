@@ -1,14 +1,14 @@
 ```
-│   404.php
+│   404.php                    Placeholder page cho content không tìm thấy
 │   archive.php
 │   comments.php
 │   content.php
 │   custom-profile-style.css
-│   footer.php
+│   footer.php                 UI cho footer, PHP code
 │   functions.php              Required. Theme setup file – used to register menus, enqueue scripts, add theme support, etc.
-│   header.php
+│   header.php                 UI cho phần Header, PHP code
 │   index.php                  Theme structure, dùng để require các bộ phận khác vào
-│   page-profile.php
+│   page-profile.php           
 │   page.php
 │   pagination.php
 │   readme.txt
