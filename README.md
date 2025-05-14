@@ -56,3 +56,17 @@ C:\laragon\bin\python\python-3.10\python db-backup-import.py
 ```
 
 #### Command sẽ lựa chọn bản backup được tạo gần nhất để import
+
+#### URL admin
+```
+http://localhost/wp-admin
+```
+#### Admin Cred
+##### Account
+```
+admin
+```
+##### Password
+```
+zzpsrqfmhgdz
+```
